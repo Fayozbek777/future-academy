@@ -1,0 +1,585 @@
+.intro {
+  width: 100%;
+  height: 310px;
+  margin: 35px auto;
+
+  .intro-backgraound {
+    background-image: url("../../../images/intro-sllider.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+  }
+
+  .intro-back {
+    background-image: url("../../../images/intro-back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1300px;
+    height: 650px;
+    position: relative;
+  }
+
+  .x-image1 {
+    width: 90px;
+    height: 90px;
+    border-width: 2px;
+    position: relative;
+    left: 1255px;
+    bottom: 330px;
+  }
+
+  .x-image2 {
+    width: 210px;
+    height: 210px;
+    border-width: 2px;
+    position: relative;
+    left: 245px;
+    top: 85px;
+  }
+
+  .intro-line-image {
+    width: 509px;
+    border-width: 2px;
+    position: relative;
+    left: 531px;
+    top: 149px;
+  }
+
+  .intro-vector-2 {
+    width: 500px;
+    height: 181px;
+    border-width: 2px;
+    position: relative;
+    top: 65px;
+    left: 45px;
+  }
+
+  .intro-vector-1 {
+    width: 126px;
+    height: 366px;
+    border-width: 2px;
+    position: relative;
+    left: 1650px;
+    top: 150px;
+  }
+
+  .intro-treangle {
+    width: 120px;
+    height: 101px;
+    border-width: 2px;
+    position: relative;
+    left: 390px;
+    top: 345px;
+  }
+
+  .intro-ball {
+    width: 160px;
+    height: 160px;
+    border-width: 2px;
+    position: relative;
+    bottom: 40px;
+    left: 1002px;
+  }
+
+  .intro-mini-vector {
+    width: 71px;
+    height: 79px;
+    border-width: 2px;
+    position: relative;
+    left: 991px;
+    bottom: 307px;
+  }
+
+  .title {
+    height: 44px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 395px;
+    left: 510px;
+    color: #ffffff;
+  }
+
+  .title2 {
+    height: 44px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 44px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 345px;
+    left: 510px;
+    color: #ffffff;
+  }
+
+  .text {
+    height: 24px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    bottom: 280px;
+    left: 510px;
+    color: #ffffff;
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    width: 100%;
+    height: 1100px;
+    margin: 20px 0;
+    overflow-x: hidden;
+
+    .intro-backgraound {
+      width: 100%;
+      height: 300px;
+      margin: 0;
+      position: relative;
+      bottom: 5px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .intro-back {
+      width: 100%;
+      height: 270px;
+      top: 300px;
+      position: relative;
+    }
+
+    .intro-line-image {
+      position: relative;
+      top: -222px;
+      left: 53px;
+      width: 150px;
+    }
+
+    .intro-ball {
+      display: none;
+    }
+
+    .intro-mini-vector {
+      position: relative;
+      left: 120px;
+      top: -350px;
+      width: 47px;
+      height: 49px;
+      border-width: 2px;
+    }
+
+    .x-image2 {
+      width: 80px;
+      height: 80px;
+      border-width: 2px;
+      position: relative;
+      left: 45px;
+      top: -250px;
+    }
+
+    .intro-treangle {
+      position: relative;
+      left: 290px;
+      width: 57px;
+      height: 47px;
+      top: 169px;
+    }
+
+    .intro-vector-1 {
+      display: none;
+    }
+
+    .intro-vector-2 {
+      position: relative;
+      left: 0;
+      top: 90px;
+      width: 250px;
+      height: 53px;
+    }
+
+    .title {
+      height: auto;
+      font-size: 24px;
+      line-height: 32px;
+      position: relative;
+      top: -125px;
+      left: 45px;
+      padding: 20px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .title2 {
+      height: auto;
+      font-size: 28px;
+      line-height: 36px;
+      position: relative;
+      top: -125px;
+      left: 79px;
+      padding: 10px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .text {
+      height: auto;
+      font-size: 16px;
+      line-height: 20px;
+      position: relative;
+      top: -125px;
+      left: 15px;
+      padding: 15px 15px 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 720px) {
+  .intro {
+    width: 100%;
+    height: 800px;
+    margin: 25px 0;
+    overflow-x: hidden;
+
+    .intro-backgraound {
+      width: 100%;
+      height: 350px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .intro-back {
+      width: 100%;
+      height: 300px;
+      top: 350px;
+      position: relative;
+    }
+
+    .intro-line-image {
+      position: relative;
+      top: -200px;
+      left: 80px;
+      width: 180px;
+    }
+
+    .intro-ball {
+      display: none;
+    }
+
+    .intro-mini-vector {
+      position: relative;
+      left: 160px;
+      top: -320px;
+      width: 55px;
+      height: 58px;
+      border-width: 2px;
+    }
+
+    .x-image2 {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      left: 60px;
+      top: -220px;
+    }
+
+    .intro-treangle {
+      position: relative;
+      left: 320px;
+      width: 70px;
+      height: 58px;
+      top: 150px;
+    }
+
+    .x-image1 {
+      display: none;
+    }
+
+    .intro-vector-1 {
+      display: none;
+    }
+
+    .intro-vector-2 {
+      position: relative;
+      left: 0;
+      top: 70px;
+      width: 300px;
+      height: 70px;
+    }
+
+    .title {
+      height: auto;
+      font-size: 28px;
+      line-height: 36px;
+      position: relative;
+      top: -110px;
+      left: 50px;
+      padding: 20px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .title2 {
+      height: auto;
+      font-size: 32px;
+      line-height: 40px;
+      position: relative;
+      top: -110px;
+      left: 80px;
+      padding: 10px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .text {
+      height: auto;
+      font-size: 18px;
+      line-height: 24px;
+      position: relative;
+      top: -110px;
+      left: 20px;
+      padding: 15px 15px 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (min-width: 721px) and (max-width: 1024px) {
+  .intro {
+    width: 100%;
+    height: 700px;
+    margin: 30px 0;
+    overflow-x: hidden;
+
+    .intro-backgraound {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .intro-back {
+      width: 100%;
+      height: 350px;
+      top: 350px;
+      position: relative;
+    }
+
+    .intro-line-image {
+      position: relative;
+      top: -180px;
+      left: 150px;
+      width: 250px;
+    }
+
+    .intro-ball {
+      display: none;
+    }
+
+    .intro-mini-vector {
+      position: relative;
+      left: 250px;
+      top: -300px;
+      width: 65px;
+      height: 70px;
+      border-width: 2px;
+    }
+
+    .x-image2 {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      left: 100px;
+      top: -200px;
+    }
+
+    .intro-treangle {
+      position: relative;
+      left: 380px;
+      width: 85px;
+      height: 70px;
+      top: 120px;
+    }
+
+    .x-image1 {
+      display: none;
+    }
+
+    .intro-vector-1 {
+      display: none;
+    }
+
+    .intro-vector-2 {
+      position: relative;
+      left: 20px;
+      top: 50px;
+      width: 350px;
+      height: 90px;
+    }
+
+    .title {
+      height: auto;
+      font-size: 32px;
+      line-height: 40px;
+      position: relative;
+      top: -100px;
+      left: 100px;
+      padding: 20px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .title2 {
+      height: auto;
+      font-size: 38px;
+      line-height: 46px;
+      position: relative;
+      top: -100px;
+      left: 120px;
+      padding: 10px 15px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .text {
+      height: auto;
+      font-size: 20px;
+      line-height: 26px;
+      position: relative;
+      top: -100px;
+      left: 40px;
+      padding: 15px 15px 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .intro {
+    width: 100%;
+    height: 650px;
+    margin: 35px auto;
+    overflow-x: hidden;
+
+    .intro-backgraound {
+      width: 100%;
+      height: 600px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .intro-back {
+      width: 100%;
+      height: 600px;
+      top: 550px;
+      position: relative;
+    }
+
+    .intro-line-image {
+      position: relative;
+      top: -350px;
+      left: 350px;
+      width: 380px;
+    }
+
+    .intro-ball {
+      position: relative;
+      bottom: 180px;
+      left: 750px;
+      width: 140px;
+      height: 140px;
+    }
+
+    .intro-mini-vector {
+      position: relative;
+      left: 750px;
+      top: -500px;
+      width: 65px;
+      height: 70px;
+    }
+
+    .x-image2 {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      left: 150px;
+      top: -100px;
+    }
+
+    .intro-treangle {
+      position: relative;
+      left: 280px;
+      width: 100px;
+      height: 85px;
+      top: 100px;
+    }
+
+    .x-image1 {
+      display: none;
+    }
+
+    .intro-vector-1 {
+      display: none;
+    }
+
+    .intro-vector-2 {
+      position: relative;
+      left: 30px;
+      top: 30px;
+      width: 450px;
+      height: 150px;
+    }
+
+    .title {
+      height: auto;
+      font-size: 34px;
+      line-height: 42px;
+      position: relative;
+      top: -250px;
+      left: 350px;
+      padding: 20px 15px 0;
+      color: #ffffff;
+    }
+
+    .title2 {
+      height: auto;
+      font-size: 44px;
+      line-height: 52px;
+      position: relative;
+      top: -250px;
+      left: 350px;
+      padding: 10px 15px 0;
+      color: #ffffff;
+    }
+
+    .text {
+      height: auto;
+      font-size: 22px;
+      line-height: 28px;
+      position: relative;
+      top: -250px;
+      left: 350px;
+      padding: 15px 15px 20px;
+      color: #ffffff;
+    }
+  }
+}
