@@ -15,11 +15,13 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 44px;
+    position: relative;
     text-align: center;
     color: #000000;
     margin-bottom: 60px;
     max-width: 1020px;
     margin-left: auto;
+    top: 100px;
     margin-right: auto;
   }
 
@@ -27,6 +29,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+    position: relative;
+    top: 98px;
     margin-bottom: 80px;
 
     .welc-box {
@@ -94,6 +98,9 @@
     padding: 40px;
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
     position: relative;
+    top: 95px;
+
+    z-index: 2;
     overflow: visible;
 
     .welc-form-box {
@@ -112,7 +119,12 @@
         width: 276px;
         height: 311px;
         position: relative;
-        top: 250px;
+        top: 200px;
+
+        @media (max-width: 480px) {
+          position: relative;
+          top: 0;
+        }
       }
     }
 
