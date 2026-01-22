@@ -2,12 +2,24 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import person1 from "../../images/person1-image.png";
+import person2 from "../../images/person2-image.png";
+import person3 from "../../images/person3-image.png";
+import star from "../../images/star-image.png";
+
 import { ChevronDown, Menu, X, MapPin, User, ArrowRight } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./UI/Home.scss";
 import "./UI/Intro.scss";
 import "./UI/Career.scss";
+import "./UI/Reviews.scss";
 
 import logo from "../../images/logo.png";
 import titleSubImage from "../../images/title-sub-image.png";
@@ -124,6 +136,74 @@ const Home = () => {
       isWide: true,
     },
   ];
+
+  const reviews = [
+    {
+      id: 1,
+      image: person1,
+      name: "Алексей Иванов",
+      course: "Студент курса «WEB-разработчик»",
+      text: "Отличные курсы! Преподаватели объясняют всё доступно и понятно. За 3 месяца я освоил React и уже нашёл работу. Рекомендую всем, кто хочет начать карьеру в IT!",
+      rating: "4.87 / 5",
+    },
+    {
+      id: 2,
+      image: person2,
+      name: "Мария Петрова",
+      course: "Студент курса «Python-разработчик»",
+      text: "Прекрасная академия! Удобная платформа, интересные задания и поддержка на каждом этапе обучения. Особенно понравились практические проекты.",
+      rating: "4.95 / 5",
+    },
+    {
+      id: 3,
+      image: person3,
+      name: "Дмитрий Смирнов",
+      course: "Студент курса «Data Science»",
+      text: "Качественное обучение от профессионалов. Программа курса актуальная и современная. После окончания успешно прошёл собеседование в крупную компанию.",
+      rating: "4.92 / 5",
+    },
+    {
+      id: 4,
+      image: person1,
+      name: "Анна Кузнецова",
+      course: "Студент курса «UI/UX дизайн»",
+      text: "Невероятно полезный курс! Научилась работать в Figma, создавать прототипы и проводить пользовательские исследования. Преподаватели всегда на связи.",
+      rating: "4.90 / 5",
+    },
+    {
+      id: 5,
+      image: person2,
+      name: "Сергей Новиков",
+      course: "Студент курса «Мобильная разработка»",
+      text: "Лучшие курсы по мобильной разработке! Освоил Swift и Kotlin, создал несколько приложений. Очень доволен результатом и поддержкой наставников.",
+      rating: "4.88 / 5",
+    },
+    {
+      id: 6,
+      image: person3,
+      name: "Елена Волкова",
+      course: "Студент курса «Frontend-разработка»",
+      text: "Отличная программа обучения! Всё структурировано и понятно. За полгода стала уверенным frontend-разработчиком. Спасибо команде академии!",
+      rating: "4.93 / 5",
+    },
+    {
+      id: 7,
+      image: person1,
+      name: "Игорь Соколов",
+      course: "Студент курса «DevOps»",
+      text: "Современный подход к обучению. Много практики с реальными инструментами: Docker, Kubernetes, CI/CD. Рекомендую всем, кто хочет развиваться в DevOps.",
+      rating: "4.91 / 5",
+    },
+    {
+      id: 8,
+      image: person2,
+      name: "Ольга Морозова",
+      course: "Студент курса «Тестирование ПО»",
+      text: "Курс превзошёл все ожидания! Узнала много нового о автоматизации тестирования. Преподаватели - практикующие специалисты с большим опытом.",
+      rating: "4.89 / 5",
+    },
+  ];
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -310,7 +390,6 @@ const Home = () => {
           </div>
         </div>
       </motion.nav>
-
       <div className="intro">
         <div className="intro-glav-box">
           <div className="intro-backgraound">
@@ -482,7 +561,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
       <div className="career">
         <div className="career-glav-box">
           <motion.div
@@ -877,6 +955,82 @@ const Home = () => {
                 )}
               </motion.div>
             ))}
+          </div>
+        </div>
+      </div>
+      <div className="reviews">
+        <div className="rew-back">
+          <motion.div
+            className="rew-title"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+            data-aos="fade-down"
+          >
+            Отзывы наших студентов
+          </motion.div>
+
+          <div className="rew-swiper-container" data-aos="fade-up">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={92}
+              slidesPerView="auto"
+              loop={true}
+              freeMode={true}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+              }}
+              speed={2000}
+              allowTouchMove={true}
+              grabCursor={false}
+              className="reviews-swiper"
+            >
+              {reviews.map((review) => (
+                <SwiperSlide key={review.id}>
+                  <motion.div
+                    className="rew-box"
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="rew-name-box">
+                      <div className="rew-name-left">
+                        <motion.img
+                          src={review.image}
+                          alt={review.name}
+                          className="person1"
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                        <div className="rew-name">{review.name}</div>
+                        <div className="rew-job">{review.course}</div>
+                        <div className="rew-desc">{review.text}</div>
+
+                        <div className="star-box">
+                          <div className="star-left">
+                            <motion.img
+                              src={star}
+                              alt="rating star"
+                              className="star"
+                              animate={{ rotate: [0, 15, -15, 0] }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                              }}
+                            />
+                          </div>
+                          <div className="star-right">
+                            <div className="star-text">{review.rating}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </div>
