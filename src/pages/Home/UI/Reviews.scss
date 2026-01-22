@@ -1,0 +1,191 @@
+.reviews {
+  width: 100%;
+  margin: 80px auto;
+  position: relative;
+  top: 145px;
+
+  @media (max-width: 480px) {
+    position: relative;
+    top: -650px;
+  }
+
+  .rew-back {
+    background-image: url("../../../images/intro-back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 680px;
+    padding: 80px 20px 100px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 9, 60, 0.72) 0%,
+        rgba(39, 170, 225, 0.48) 100%
+      );
+      pointer-events: none;
+    }
+  }
+
+  .rew-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .rew-swiper-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews-swiper {
+    overflow: hidden;
+    padding: 20px 0 80px;
+    :global(.swiper-wrapper) {
+      transition-timing-function: linear !important;
+    }
+
+    .swiper-slide {
+      width: 360px !important;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+  }
+
+  .rew-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px 25px;
+    height: 100%;
+    min-height: 460px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &:hover {
+      box-shadow: 0 15px 50px rgba(247, 148, 29, 0.3);
+      transform: translateY(-10px) scale(1.02);
+    }
+
+    .rew-name-box {
+      height: 100%;
+    }
+
+    .rew-name-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+
+    .person1 {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .rew-name {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 22px;
+      text-align: center;
+      color: #000;
+      margin-bottom: 6px;
+    }
+
+    .rew-job {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: center;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .rew-desc {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .star-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: auto;
+
+      .star {
+        width: 32px;
+        height: 32px;
+      }
+
+      .star-text {
+        font-weight: 600;
+        font-size: 15px;
+        color: #f7941d;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .reviews-swiper .swiper-slide {
+      width: 340px !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .reviews-swiper .swiper-slide {
+      width: 320px !important;
+    }
+    .rew-box {
+      min-height: 440px;
+      padding: 25px 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .reviews-swiper .swiper-slide {
+      width: 300px !important;
+    }
+    .rew-box {
+      min-height: 420px;
+      padding: 20px 18px;
+    }
+    .person1 {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .reviews-swiper .swiper-slide {
+      width: 280px !important;
+    }
+  }
+}
