@@ -23,6 +23,7 @@ import "./UI/Career.scss";
 import "./UI/Reviews.scss";
 import "./UI/Reviews.scss";
 import "./UI/Welcome.scss";
+import "./UI/Footer.scss";
 
 import logo from "../../images/logo.png";
 import titleSubImage from "../../images/title-sub-image.png";
@@ -47,6 +48,12 @@ import smartGuy from "../../images/smart-guy.png";
 import book from "../../images/book-image.png";
 import teacher from "../../images/teacher-image.png";
 import owl from "../../images/owl-image.png";
+
+import wk from "../../images/wk.png";
+import face from "../../images/facebook.png";
+import insta from "../../images/instagram.png";
+import yt from "../../images/youtube.png";
+import tg from "../../images/telegram.png";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -249,6 +256,68 @@ const Home = () => {
       text: "Курс превзошёл все ожидания! Узнала много нового о автоматизации тестирования. Преподаватели - практикующие специалисты с большим опытом.",
       rating: "4.89 / 5",
     },
+  ];
+
+  const footerLinks = [
+    {
+      title: "Подросткам",
+      items: [
+        "Web-разработка",
+        "Прикладное программирование",
+        "Графическое моделирование",
+        "Game Development",
+        "Soft skills",
+        "Разработчик мобильных приложений",
+        "Блогинг",
+        "Создание игр",
+        "Программирование",
+        "Мультимедиа",
+      ],
+    },
+    {
+      title: "Взрослым",
+      items: [
+        "Разработчик игр на Unity",
+        "Разработка ПО",
+        "Графический Дизайн",
+        "Тестировщик ПО",
+        "Интернет Маркетинг",
+        "Java-разработчик",
+        "Python–разработчик",
+        "IOS-разработчик",
+        "Программирование",
+      ],
+    },
+    {
+      title: "Детям",
+      items: [
+        "Робототехника",
+        "Создание игр",
+        "Программирование",
+        "Мультимедиа",
+        "Soft skills",
+        "Шахматы",
+        "Блогинг",
+      ],
+    },
+    {
+      title: "Информация",
+      items: [
+        "Об академии",
+        "Мероприятия",
+        "Новости",
+        "База знаний",
+        "Карьера",
+        "Контакты",
+      ],
+    },
+  ];
+  const socialLinks = [
+    { icon: wk, name: "VK", url: "#" },
+    { icon: insta, name: "Instagram", url: "#" },
+    { icon: face, name: "Facebook", url: "#" },
+    { icon: yt, name: "YouTube", url: "#" },
+    { icon: tg, name: "Telegram", url: "#" },
   ];
 
   useEffect(() => {
@@ -1224,6 +1293,80 @@ const Home = () => {
           </div>
         </motion.div>
       </div>
+      <footer className="footer">
+        <div className="footer-glav-box">
+          <motion.div className="footer-left" data-aos="fade-right">
+            <motion.img
+              src={fixedLogo}
+              alt="ХОД Future Academy"
+              className="footer-logo"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
+
+            <motion.div
+              className="footer-number"
+              whileHover={{ scale: 1.05, color: "#F7941D" }}
+              transition={{ duration: 0.2 }}
+            >
+              8 800 950-33-98
+            </motion.div>
+
+            <div className="footer-adress">г. Москва, ул. Ленина, д. 50</div>
+
+            <motion.div
+              className="footer-email"
+              whileHover={{ scale: 1.05, color: "#F7941D" }}
+              transition={{ duration: 0.2 }}
+            >
+              info@hodfutureacademy.ru
+            </motion.div>
+
+            <div className="footer-social-box">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  className="social-link"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <img src={social.icon} alt={social.name} className="social" />
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="footer-text">© 2024 ХОД, Future Academy</div>
+          </motion.div>
+
+          {footerLinks.map((column, columnIndex) => (
+            <motion.div
+              key={columnIndex}
+              className="footer-right"
+              data-aos="fade-up"
+              data-aos-delay={columnIndex * 100}
+            >
+              <div className="footer-items">
+                <div className="footer-item-title">{column.title}</div>
+                <ul>
+                  {column.items.map((item, itemIndex) => (
+                    <motion.li
+                      key={itemIndex}
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <a href="#" className="footer-item">
+                        {item}
+                      </a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </footer>
     </>
   );
 };
