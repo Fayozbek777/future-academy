@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Send } from "lucide-react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { ChevronDown, Menu, X, MapPin, User, ArrowRight } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -13,13 +17,12 @@ import person2 from "../../images/person2-image.png";
 import person3 from "../../images/person3-image.png";
 import star from "../../images/star-image.png";
 
-import { ChevronDown, Menu, X, MapPin, User, ArrowRight } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import "./UI/Home.scss";
 import "./UI/Intro.scss";
 import "./UI/Career.scss";
 import "./UI/Reviews.scss";
+import "./UI/Reviews.scss";
+import "./UI/Welcome.scss";
 
 import logo from "../../images/logo.png";
 import titleSubImage from "../../images/title-sub-image.png";
@@ -38,6 +41,12 @@ import monitor from "../../images/monitor-image.png";
 import tryImage from "../../images/try-image.png";
 import diagram from "../../images/diagram-image.png";
 import news from "../../images/newspaper-image.png";
+
+import settings from "../../images/settings-image.png";
+import smartGuy from "../../images/smart-guy.png";
+import book from "../../images/book-image.png";
+import teacher from "../../images/teacher-image.png";
+import owl from "../../images/owl-image.png";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -86,6 +95,44 @@ const Home = () => {
       "Продуктовый менеджмент",
     ],
   };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  const features = [
+    {
+      icon: settings,
+      text: "Передовой подход к образовательному процессу",
+    },
+    {
+      icon: book,
+      text: "Непрерывное усовершенствование и пополнение базы курсов",
+    },
+    {
+      icon: teacher,
+      text: "Только практикующие преподаватели",
+    },
+    {
+      icon: smartGuy,
+      text: "Сопровождение на всех этапах. От начала обучения до трудоустройства",
+    },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const [cityOpen, setCityOpen] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -1033,6 +1080,149 @@ const Home = () => {
             </Swiper>
           </div>
         </div>
+      </div>
+      <div className="welcome">
+        <motion.h1
+          className="welc-glav-title"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+          data-aos="fade-down"
+        >
+          Добро пожаловать в Академию будущего ХОД
+        </motion.h1>
+
+        <div className="welc-glav-box">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="welc-box"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -10, scale: 1.05 }}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
+              <motion.img
+                src={feature.icon}
+                alt=""
+                className="settings"
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <h3 className="text">{feature.text}</h3>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          className="welc-form"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+          data-aos="zoom-in"
+        >
+          <div className="welc-form-box">
+            <motion.div
+              className="welc-form-left"
+              animate={{
+                y: [0, -15, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <img src={owl} alt="" className="owl" />
+            </motion.div>
+
+            <div className="welc-form-middle">
+              <motion.div
+                className="welc-form-chat"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="welc-form-title">Помочь с выбором?</div>
+                <div className="welc-form-text">
+                  Оставьте заявку и наши специалисты свяжутся с вами, ответят на
+                  все вопросы и подберут подходящий вариант обучения.
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="welc-form-right">
+              <form onSubmit={handleSubmit} className="welc-forma-box">
+                <motion.input
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
+                  className="name-inp"
+                  value={formData.name}
+                  onChange={handleChange}
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                  required
+                />
+
+                <div className="welc-inp-box">
+                  <motion.input
+                    type="tel"
+                    name="phone"
+                    placeholder="Ваш телефон"
+                    className="number-inp"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    whileFocus={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                    required
+                  />
+                  <motion.input
+                    type="email"
+                    name="email"
+                    placeholder="Ваш e-mail"
+                    className="email-inp"
+                    value={formData.email}
+                    onChange={handleChange}
+                    whileFocus={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                    required
+                  />
+                </div>
+
+                <div className="welc-btn-box">
+                  <div className="welc-btn-left">
+                    <div className="welc-text">
+                      Нажимая на кнопку, я соглашаюсь на обработку персональных
+                      данных и с правилами пользования Платформой
+                    </div>
+                  </div>
+                  <motion.button
+                    type="submit"
+                    className="welc-btn"
+                    whileHover={{
+                      scale: 1.05,
+                      background:
+                        "linear-gradient(90deg, #27AAE1 0%, #F7941D 100%)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Отправить
+                    <Send className="send-icon" size={18} />
+                  </motion.button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </>
   );
