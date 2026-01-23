@@ -191,7 +191,10 @@ const LoginPage = () => {
                 data-aos="fade-down"
                 data-aos-delay="100"
               >
-                <a href="#" className="item">
+                <a
+                  href={`/${import.meta.env.VITE_EDUCATION_PATH}`}
+                  className="item"
+                >
                   <img src={titleSubImage} alt="" className="title-img" />
                   Все курсы
                 </a>
