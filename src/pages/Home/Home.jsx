@@ -1362,7 +1362,10 @@ const Home = () => {
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <a href="#" className="footer-item">
+                      <a
+                        href={`/${import.meta.env.VITE_CONTACT_PATH}`}
+                        className="footer-item"
+                      >
                         {item}
                       </a>
                     </motion.li>
