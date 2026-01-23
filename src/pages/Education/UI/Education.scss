@@ -1,0 +1,447 @@
+.education {
+  width: 100%;
+  padding: 6rem 4rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+
+  .educ-glav-box {
+    max-width: 144rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 28rem 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  // Фильтры (левая колонка)
+  .educ-left {
+    background: #ffffff;
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(247, 148, 29, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 12rem;
+
+    .filter-section {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+      &:last-of-type {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #000;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &::before {
+          content: "";
+          width: 0.4rem;
+          height: 2rem;
+          background: linear-gradient(180deg, #f7941d 0%, #27aae1 100%);
+          border-radius: 0.2rem;
+        }
+      }
+    }
+
+    // Стили для чекбоксов
+    .sub-title {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1rem 1.2rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 0.5rem;
+      position: relative;
+      overflow: hidden;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(247, 148, 29, 0.1) 0%,
+          rgba(39, 170, 225, 0.1) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      &:hover {
+        background: rgba(247, 148, 29, 0.05);
+        transform: translateX(0.5rem);
+
+        &::before {
+          opacity: 1;
+        }
+
+        .checkbox-label {
+          color: #000;
+        }
+      }
+
+      // Стили для активного чекбокса
+      &:has(input[type="checkbox"]:checked) {
+        background: linear-gradient(
+          90deg,
+          rgba(247, 148, 29, 0.1) 0%,
+          rgba(39, 170, 225, 0.1) 100%
+        );
+        border: 1px solid rgba(247, 148, 29, 0.3);
+
+        .checkbox-label {
+          color: #000;
+          font-weight: 600;
+        }
+
+        .custom-checkbox {
+          accent-color: #f7941d;
+          box-shadow: 0 0 0 3px rgba(247, 148, 29, 0.2);
+        }
+      }
+
+      .custom-checkbox {
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        accent-color: #27aae1;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        border-radius: 0.4rem;
+
+        &:checked {
+          background-color: #f7941d;
+          border-color: #f7941d;
+        }
+
+        &:hover:not(:checked) {
+          transform: scale(1.1);
+          box-shadow: 0 0 0 2px rgba(247, 148, 29, 0.3);
+        }
+      }
+
+      .checkbox-label {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 1.4rem;
+        color: #666;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.3s ease;
+        flex: 1;
+      }
+    }
+
+    // Стили для слайдера длительности
+    .duration-slider {
+      .duration-label {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 1.4rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .slider-container {
+        position: relative;
+        padding: 2rem 0;
+
+        // Кастомный track
+        .slider-track {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 0.6rem;
+          background: #e0e0e0;
+          border-radius: 0.5rem;
+          transform: translateY(-50%);
+          overflow: hidden;
+
+          .slider-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: calc((var(--value) - 1) / 23 * 100%);
+            background: linear-gradient(90deg, #f7941d 0%, #27aae1 100%);
+            border-radius: 0.5rem;
+            transition: width 0.3s ease;
+          }
+        }
+
+        input[type="range"].slider {
+          width: 100%;
+          height: 3rem;
+          background: transparent;
+          position: relative;
+          z-index: 2;
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin: 0;
+
+          // Скрыть стандартный thumb
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #f7941d;
+            box-shadow: 0 0.4rem 1.2rem rgba(247, 148, 29, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+
+            &:hover {
+              transform: scale(1.2);
+              box-shadow: 0 0.6rem 1.8rem rgba(247, 148, 29, 0.6);
+            }
+          }
+
+          &::-moz-range-thumb {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #f7941d;
+            box-shadow: 0 0.4rem 1.2rem rgba(247, 148, 29, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+          }
+
+          // Кастомный track
+          &::-webkit-slider-runnable-track {
+            background: transparent;
+            height: 0.6rem;
+            border-radius: 0.5rem;
+          }
+
+          &::-moz-range-track {
+            background: transparent;
+            height: 0.6rem;
+            border-radius: 0.5rem;
+          }
+        }
+      }
+
+      .duration-value {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: #f7941d;
+        text-align: center;
+        background: rgba(247, 148, 29, 0.1);
+        padding: 0.8rem 1.6rem;
+        border-radius: 1rem;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  // Основной контент (карточки)
+  .educ-right {
+    .educ-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+      gap: 2.5rem;
+
+      .educ-box {
+        background: #ffffff;
+        border-radius: 2rem;
+        padding: 2.5rem;
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(247, 148, 29, 0.1);
+        height: 100%;
+
+        &:hover {
+          transform: translateY(-0.5rem);
+          box-shadow: 0 2rem 4rem rgba(247, 148, 29, 0.15);
+          border-color: rgba(247, 148, 29, 0.3);
+        }
+
+        // Цвета фона через инлайн стили
+        &[style*="background-color"] {
+          background: linear-gradient(
+            135deg,
+            var(--card-bg, #c7eeff) 0%,
+            rgba(255, 255, 255, 0.95) 100%
+          );
+        }
+
+        .discount-badge {
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+          color: #ffffff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 1.2rem;
+          padding: 0.6rem 1.2rem;
+          border-radius: 0.8rem;
+          box-shadow: 0 0.4rem 1.2rem rgba(255, 71, 87, 0.3);
+          z-index: 2;
+          animation: pulse 2s infinite;
+
+          @keyframes pulse {
+            0%,
+            100% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .edc-sub-text {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 1.2rem;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-bottom: 1.5rem;
+        }
+
+        .educ-img-box {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 1.5rem;
+
+          .educ-img-left {
+            .phone {
+              width: 4rem;
+              height: 4rem;
+              filter: brightness(1.1);
+            }
+          }
+
+          .educ-img-right {
+            flex: 1;
+
+            .edc-title {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 700;
+              font-size: 1.8rem;
+              line-height: 1.4;
+              color: #000;
+              margin-bottom: 0.5rem;
+            }
+          }
+        }
+
+        .edc-text {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 1.6;
+          color: #666;
+          margin-bottom: 2rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .edc-month {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 600;
+          font-size: 1.4rem;
+          color: #f7941d;
+          padding: 0.8rem 1.6rem;
+          background: rgba(247, 148, 29, 0.1);
+          border-radius: 1rem;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  // Адаптивность
+  @media (max-width: 1200px) {
+    padding: 5rem 3rem;
+
+    .educ-glav-box {
+      grid-template-columns: 26rem 1fr;
+      gap: 3rem;
+    }
+
+    .educ-cards {
+      grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+    }
+  }
+
+  @media (max-width: 992px) {
+    padding: 4rem 2rem;
+
+    .educ-glav-box {
+      grid-template-columns: 1fr;
+    }
+
+    .educ-left {
+      width: 100%;
+      position: static;
+      margin-bottom: 3rem;
+    }
+
+    .educ-cards {
+      grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+
+    .educ-left {
+      padding: 2rem;
+    }
+
+    .educ-cards {
+      grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+      gap: 1.5rem;
+
+      .educ-box {
+        padding: 2rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    padding: 2rem 1rem;
+
+    .educ-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}
