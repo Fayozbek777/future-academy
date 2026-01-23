@@ -12,11 +12,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import person1 from "../../images/person1-image.png";
-import person2 from "../../images/person2-image.png";
-import person3 from "../../images/person3-image.png";
-import star from "../../images/star-image.png";
-
 import "./UI/Home.scss";
 import "./UI/Intro.scss";
 import "./UI/Career.scss";
@@ -54,6 +49,11 @@ import face from "../../images/facebook.png";
 import insta from "../../images/instagram.png";
 import yt from "../../images/youtube.png";
 import tg from "../../images/telegram.png";
+
+import person1 from "../../images/person1-image.png";
+import person2 from "../../images/person2-image.png";
+import person3 from "../../images/person3-image.png";
+import star from "../../images/star-image.png";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -497,7 +497,10 @@ const Home = () => {
                 data-aos="fade-down"
                 data-aos-delay="400"
               >
-                <a href="#" className="item login-btn">
+                <a
+                  href={`/${import.meta.env.VITE_LOGIN_PATH}`}
+                  className="item login-btn"
+                >
                   <User className="title-img-icon" size={20} />
                   Войти
                 </a>
