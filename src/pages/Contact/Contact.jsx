@@ -1,16 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X, MapPin, User } from "lucide-react";
-import { Send } from "lucide-react";
-import { Link } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "./UI/Education.scss";
-import "../Home/UI/Home.scss";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import logo from "../../images/logo.png";
 import titleSubImage from "../../images/title-sub-image.png";
+import { Send } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
+import { Locate, Mail } from "lucide-react";
 import fixedLogo from "../../images/fixed-logo.png";
-import phone from "../../images/phone-image.png";
 
 import wk from "../../images/wk.png";
 import face from "../../images/facebook.png";
@@ -22,69 +17,48 @@ import smartGuy from "../../images/smart-guy.png";
 import book from "../../images/book-image.png";
 import teacher from "../../images/teacher-image.png";
 import owl from "../../images/owl-image.png";
-const Education = () => {
-  const [cityOpen, setCityOpen] = useState(false);
-  const [menuActive, setMenuActive] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+
+const features = [
+  {
+    icon: settings,
+    text: "Передовой подход к образовательному процессу",
+  },
+  {
+    icon: book,
+    text: "Непрерывное усовершенствование и пополнение базы курсов",
+  },
+  {
+    icon: teacher,
+    text: "Только практикующие преподаватели",
+  },
+  {
+    icon: smartGuy,
+    text: "Сопровождение на всех этапах. От начала обучения до трудоустройства",
+  },
+];
+
+import {
+  ChevronDown,
+  Menu,
+  X,
+  MapPin,
+  User,
+  Phone,
+  ChevronRight,
+} from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "../Home/UI/Home.scss";
+import "./UI/Contact.scss";
+import socials from "../../images/socials.png";
+import yandexDzen from "../../images/yandex.png";
+
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
   });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const [difficulty, setDifficulty] = useState([]); // Новичок, Пользователь...
-  const [educationType, setEducationType] = useState([]); // Любой, Профессия, Курс
-  const [duration, setDuration] = useState(24); // до N месяцев
-
-  const socialLinks = [
-    { icon: wk, name: "VK", url: "#" },
-    { icon: insta, name: "Instagram", url: "#" },
-    { icon: face, name: "Facebook", url: "#" },
-    { icon: yt, name: "YouTube", url: "#" },
-    { icon: tg, name: "Telegram", url: "#" },
-  ];
-  const cities = [
-    "Абакан",
-    "Азов",
-    "Александров",
-    "Алексин",
-    "Альметьевск",
-    "Анапа",
-    "Ангарск",
-    "Анжеро-Судженск",
-    "Апатиты",
-    "Арзамас",
-    "Армавир",
-  ];
-  const features = [
-    {
-      icon: settings,
-      text: "Передовой подход к образовательному процессу",
-    },
-    {
-      icon: book,
-      text: "Непрерывное усовершенствование и пополнение базы курсов",
-    },
-    {
-      icon: teacher,
-      text: "Только практикующие преподаватели",
-    },
-    {
-      icon: smartGuy,
-      text: "Сопровождение на всех этапах. От начала обучения до трудоустройства",
-    },
-  ];
   const footerLinks = [
     {
       title: "Подросткам",
@@ -139,172 +113,78 @@ const Education = () => {
       ],
     },
   ];
-  const filteredCards = useMemo(() => {
-    const educationCards = [
-      {
-        id: 1,
-        type: "Программа",
-        title: "Разработка мобильных приложений",
-        description:
-          "Разработчик мобильных приложений создаёт приложения, которыми люди ежедневно пользуются на смартфонах, умных часах и планшетах.",
-        months: 24,
-        bg: "#C7EEFF",
-        discount: null,
-        level: "Профессионал",
-      },
-      {
-        id: 2,
-        type: "Курс",
-        title: "Web-разработка для начинающих",
-        description:
-          "Научитесь создавать современные сайты и веб-приложения с использованием HTML, CSS, JavaScript и React.",
-        months: 6,
-        bg: "#FFCE94",
-        discount: null,
-        level: "Новичок",
-      },
-      {
-        id: 3,
-        type: "Программа",
-        title: "Python-разработчик",
-        description:
-          "Освойте один из самых популярных языков программирования и станьте востребованным специалистом.",
-        months: 18,
-        bg: "#FFE38E",
-        discount: null,
-        level: "Пользователь",
-      },
-      {
-        id: 4,
-        type: "Курс",
-        title: "Графический дизайн",
-        description:
-          "Изучите основы дизайна, работу в Photoshop, Illustrator и Figma. Создавайте креативные проекты.",
-        months: 12,
-        bg: "#DDDDFF",
-        discount: "-20%",
-        level: "Пользователь",
-      },
-      {
-        id: 5,
-        type: "Программа",
-        title: "Data Science и аналитика",
-        description:
-          "Станьте специалистом по работе с данными. Анализируйте информацию и стройте прогнозные модели.",
-        months: 20,
-        bg: "#B8EFCF",
-        discount: null,
-        level: "Профессионал",
-      },
-      {
-        id: 6,
-        type: "Курс",
-        title: "UI/UX дизайн",
-        description:
-          "Проектируйте удобные и красивые интерфейсы. Изучите принципы пользовательского опыта.",
-        months: 8,
-        bg: "#C7EEFF",
-        discount: null,
-        level: "Новичок",
-      },
-      {
-        id: 7,
-        type: "Программа",
-        title: "Frontend-разработка",
-        description:
-          "Освойте интернет-маркетинг, SEO, контекстную рекламу и SMM для продвижения бизнеса в сети.",
-        months: 16,
-        bg: "#C5DDFF",
-        discount: "-20%",
-        level: "Пользователь",
-      },
-      {
-        id: 8,
-        type: "Курс",
-        title: "Digital-маркетинг",
-        description:
-          "Станьте специалистом по работе с данными. Анализируйте информацию и стройте прогнозные модели.",
-        months: 10,
-        bg: "#FFE9A8",
-        discount: null,
-        level: "Новичок",
-      },
-      {
-        id: 9,
-        type: "Программа",
-        title: "Тестирование ПО",
-        description:
-          "Научитесь находить ошибки в программах, автоматизировать процессы тестирования.",
-        months: 14,
-        bg: "#FFEEF6",
-        discount: null,
-        level: "Пользователь",
-      },
-      {
-        id: 10,
-        type: "Курс",
-        title: "Создание игр на Unity",
-        description:
-          "Разрабатывайте собственные компьютерные и мобильные игры на популярном движке Unity.",
-        months: 12,
-        bg: "#DDDDFF",
-        discount: "-20%",
-        level: "Пользователь",
-      },
-    ];
+  const socialLinks = [
+    { icon: wk, name: "VK", url: "#" },
+    { icon: insta, name: "Instagram", url: "#" },
+    { icon: face, name: "Facebook", url: "#" },
+    { icon: yt, name: "YouTube", url: "#" },
+    { icon: tg, name: "Telegram", url: "#" },
+  ];
+  const [cityOpen, setCityOpen] = useState(false);
+  const [menuActive, setMenuActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    return educationCards.filter((card) => {
-      if (card.months > duration) return false;
-      let typeMatch = true;
-      if (educationType.length > 0) {
-        const normalizedType = card.type === "Программа" ? "Профессия" : "Курс";
-        typeMatch =
-          educationType.includes("Любой") ||
-          educationType.includes(normalizedType);
-      }
-      let levelMatch = true;
-      if (difficulty.length > 0) {
-        levelMatch = difficulty.includes(card.level);
-      }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
-      return typeMatch && levelMatch;
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-  }, [difficulty, educationType, duration]);
-
-  const handleDifficultyChange = (value) => {
-    setDifficulty((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
-    );
   };
 
-  const handleEducationTypeChange = (value) => {
-    setEducationType((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
-    );
-  };
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true, easing: "ease-out" });
-
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const cities = [
+    "Абакан",
+    "Азов",
+    "Александров",
+    "Алексин",
+    "Альметьевск",
+    "Анапа",
+    "Ангарск",
+    "Анжеро-Судженск",
+    "Апатиты",
+    "Арзамас",
+    "Армавир",
+  ];
 
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: true,
-      easing: "ease-out",
+      once: false,
     });
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const contactInfo = [
+    {
+      icon: <Phone size={24} />,
+      text: "8 800 950-33-98",
+      link: "tel:88009503398",
+    },
+    {
+      icon: <Mail size={24} />,
+      text: "info@hodfutureacademy.ru",
+      link: "mailto:info@hodfutureacademy.ru",
+    },
+    {
+      icon: <MapPin size={24} />,
+      text: "г. Москва, ул. Ленина, д. 50",
+      link: "#",
+    },
+  ];
 
   return (
     <div>
@@ -315,25 +195,30 @@ const Education = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="nav-glav-box">
-          <motion.div className="nav-left" whileHover={{ scale: 1.05 }}>
-            <Link to="/">
-              <motion.img
-                src={scrolled ? fixedLogo : logo}
-                alt="Logo"
-                className="nav-logo"
-                key={scrolled ? "fixed" : "normal"}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4 }}
-              />
-            </Link>
+          <motion.div
+            className="nav-left"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.img
+              src={scrolled ? fixedLogo : logo}
+              alt="Logo"
+              className="nav-logo"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              key={scrolled ? "fixed" : "normal"}
+            />
           </motion.div>
 
           <div
             className="burger-menu"
             onClick={() => setMenuActive(!menuActive)}
           >
-            <motion.div animate={{ rotate: menuActive ? 90 : 0 }}>
+            <motion.div
+              animate={{ rotate: menuActive ? 90 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
               {menuActive ? <X size={32} /> : <Menu size={32} />}
             </motion.div>
           </div>
@@ -346,7 +231,7 @@ const Education = () => {
                 data-aos-delay="100"
               >
                 <a
-                  href={`/${import.meta.env.VITE_EDUCATION_PATH || "education"}`}
+                  href={`/${import.meta.env.VITE_EDUCATION_PATH}`}
                   className="item"
                 >
                   <img src={titleSubImage} alt="" className="title-img" />
@@ -411,25 +296,30 @@ const Education = () => {
                       initial={{ opacity: 0, y: -20, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <div className="city-dropdown-glow" />
+                      <div className="city-dropdown-glow"></div>
+
                       <div className="city-dropdown-content">
                         <button
                           className="close-city-btn"
                           onClick={() => setCityOpen(false)}
+                          aria-label="Закрыть"
                         >
                           <X size={24} />
                         </button>
+
                         <h3>Выберите Город</h3>
                         <div className="city-grid">
                           {[1, 2, 3, 4].map((col) => (
                             <ul key={col} className="city-col">
-                              {cities.map((city, i) => (
+                              {cities.map((city, index) => (
                                 <motion.li
-                                  key={i}
+                                  key={index}
                                   className="city-name"
                                   onClick={() => setCityOpen(false)}
                                   whileHover={{ x: 5, color: "#f7941d" }}
+                                  transition={{ duration: 0.2 }}
                                 >
                                   {city}
                                 </motion.li>
@@ -459,7 +349,7 @@ const Education = () => {
                 data-aos-delay="400"
               >
                 <a
-                  href={`/${import.meta.env.VITE_LOGIN_PATH || "login"}`}
+                  href={`/${import.meta.env.VITE_LOGIN_PATH}`}
                   className="item login-btn"
                 >
                   <User className="title-img-icon" size={20} />
@@ -470,131 +360,93 @@ const Education = () => {
           </div>
         </div>
       </motion.nav>
-      <div>
-        <div className="education">
-          <div className="educ-glav-box">
-            <motion.div className="educ-left" data-aos="fade-right">
-              <div className="filter-section">
-                <div className="title">Уровень сложности</div>
-                {["Новичок", "Пользователь", "Профессионал", "Эксперт"].map(
-                  (level) => (
-                    <motion.label
-                      key={level}
-                      className="sub-title"
-                      whileHover={{ x: 5 }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={difficulty.includes(level)}
-                        onChange={() => handleDifficultyChange(level)}
-                        className="custom-checkbox"
-                      />
-                      <span className="checkbox-label">{level}</span>
-                    </motion.label>
-                  ),
-                )}
-              </div>
-
-              {/* Тип обучения */}
-              <div className="filter-section">
-                <div className="title">Тип обучения</div>
-                {["Любой", "Профессия", "Курс"].map((type) => (
-                  <motion.label
-                    key={type}
-                    className="sub-title"
-                    whileHover={{ x: 5 }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={educationType.includes(type)}
-                      onChange={() => handleEducationTypeChange(type)}
-                      className="custom-checkbox"
-                    />
-                    <span className="checkbox-label">{type}</span>
-                  </motion.label>
-                ))}
-              </div>
-
-              {/* Длительность */}
-              <div className="filter-section">
-                <div className="title">Длительность</div>
-                <div className="duration-slider">
-                  <div className="duration-label">до {duration} месяцев</div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="24"
-                    value={duration}
-                    onChange={(e) => setDuration(Number(e.target.value))}
-                    className="slider"
-                  />
-                  <div className="duration-value">{duration} мес.</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Правая колонка — карточки */}
-            <div className="educ-right">
-              <div className="educ-cards">
-                <AnimatePresence mode="wait">
-                  {filteredCards.length === 0 ? (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="no-results"
-                    >
-                      По выбранным фильтрам ничего не найдено
-                    </motion.div>
-                  ) : (
-                    filteredCards.map((card, index) => (
-                      <motion.div
-                        key={card.id}
-                        className="educ-box"
-                        style={{ backgroundColor: card.bg }}
-                        data-aos="fade-up"
-                        data-aos-delay={index * 60}
-                        whileHover={{ scale: 1.04, y: -6 }}
-                        transition={{ duration: 0.25 }}
-                        layout
-                      >
-                        {card.discount && (
-                          <motion.div
-                            className="discount-badge"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{
-                              delay: 0.4,
-                              type: "spring",
-                              stiffness: 200,
-                            }}
-                          >
-                            {card.discount}
-                          </motion.div>
-                        )}
-
-                        <div className="edc-sub-text">{card.type}</div>
-
-                        <div className="educ-img-box">
-                          <div className="educ-img-left">
-                            <img src={phone} alt="Иконка" className="phone" />
-                          </div>
-                          <div className="educ-img-right">
-                            <div className="edc-title">{card.title}</div>
-                          </div>
-                        </div>
-
-                        <div className="edc-text">{card.description}</div>
-                        <div className="edc-month">{card.months} мес.</div>
-                      </motion.div>
-                    ))
-                  )}
-                </AnimatePresence>
-              </div>
+      <div className="contact">
+        <div className="contact-glav-box">
+          <motion.div className="contact-left" data-aos="fade-right">
+            <div className="breadcrumb">
+              <span className="breadcrumb-item">
+                <a href="/">Главная</a>
+              </span>
+              <ChevronRight size={16} className="breadcrumb-arrow" />
+              <span className="breadcrumb-item active">Контакты</span>
             </div>
-          </div>
+
+            <motion.h1
+              className="title"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6 }}
+            >
+              Контакты
+            </motion.h1>
+
+            <div className="contact-info-list">
+              {contactInfo.map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.link}
+                  className="contact-info-item"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 5, scale: 1.02 }}
+                >
+                  <div className="contact-icon">{item.icon}</div>
+                  <div className="contact-text">{item.text}</div>
+                </motion.a>
+              ))}
+            </div>
+
+            <motion.div
+              className="social-section"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.img
+                src={socials}
+                alt="Social networks"
+                className="contact-image"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.img
+                src={yandexDzen}
+                alt="Yandex Dzen"
+                className="contact-image1"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
+          </motion.div>
+
+          <motion.div className="contact-right" data-aos="fade-left">
+            <div className="map-container">
+              <motion.div
+                className="map-glow"
+                animate={{
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <iframe
+                src="https://www.google.com/maps/d/embed?mid=1WawOkbEXKmzdkQvMYwzFaG54Wbk&hl=en&ehbc=2E312F"
+                className="map-iframe"
+                title="ХОД Future Academy Location"
+                loading="lazy"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
+
       <div className="welcome">
         <motion.h1
           className="welc-glav-title"
@@ -819,4 +671,4 @@ const Education = () => {
   );
 };
 
-export default Education;
+export default Contact;
