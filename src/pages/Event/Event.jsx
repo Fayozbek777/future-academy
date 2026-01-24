@@ -29,6 +29,7 @@ import face from "../../images/facebook.png";
 import insta from "../../images/instagram.png";
 import yt from "../../images/youtube.png";
 import tg from "../../images/telegram.png";
+import { Link } from "react-router-dom";
 
 const Event = () => {
   const footerLinks = [
@@ -390,15 +391,17 @@ const Event = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <motion.img
-              src={scrolled ? fixedLogo : logo}
-              alt="Logo"
-              className="nav-logo"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              key={scrolled ? "fixed" : "normal"}
-            />
+            <Link to="/">
+              <motion.img
+                src={scrolled ? fixedLogo : logo}
+                alt="Logo"
+                className="nav-logo"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                key={scrolled ? "fixed" : "normal"}
+              />
+            </Link>
           </motion.div>
 
           <div
@@ -457,7 +460,10 @@ const Event = () => {
                 data-aos="fade-down"
                 data-aos-delay="250"
               >
-                <a href="#" className="item">
+                <a
+                  href={`/${import.meta.env.VITE_CAREER_PATH}`}
+                  className="item"
+                >
                   Карьера
                 </a>
               </motion.li>

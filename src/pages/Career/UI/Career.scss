@@ -1,0 +1,633 @@
+.career {
+  width: 100%;
+  background: #f8f9fa;
+
+  // Hero Section
+  .career-hero {
+    background: linear-gradient(135deg, #00093c 0%, #1a1f3a 100%);
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+    bottom: 145px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(247, 148, 29, 0.1) 100%
+      );
+      pointer-events: none;
+    }
+
+    .career-hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+
+      .breadcrumb-item {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+
+        &.active {
+          color: #f7941d;
+          font-weight: 600;
+        }
+      }
+
+      .breadcrumb-arrow {
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    .career-hero-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .career-hero-subtitle {
+      font-family: "Montserrat", sans-serif;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 60px;
+      max-width: 600px;
+    }
+
+    .career-stats {
+      display: flex;
+      gap: 60px;
+
+      .stat-item {
+        .stat-number {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 48px;
+          background: linear-gradient(90deg, #f7941d 0%, #27aae1 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 8px;
+        }
+
+        .stat-label {
+          font-family: "Montserrat", sans-serif;
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+  }
+
+  // Benefits Section
+  .career-benefits {
+    padding: 100px 40px;
+    background: #ffffff;
+
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      text-align: center;
+      color: #000000;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #f7941d 0%, #27aae1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .benefits-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .benefit-card {
+      background: #f8f9fa;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(247, 148, 29, 0.05) 0%,
+          rgba(39, 170, 225, 0.05) 100%
+        );
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .benefit-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f7941d 0%, #27aae1 100%);
+        border-radius: 50%;
+        color: #ffffff;
+      }
+
+      .benefit-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: #000000;
+        margin-bottom: 12px;
+      }
+
+      .benefit-desc {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        color: #666666;
+      }
+    }
+  }
+
+  // Vacancies Section
+  .career-vacancies {
+    padding: 100px 40px;
+    background: #f8f9fa;
+
+    .section-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      text-align: center;
+      color: #000000;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #f7941d 0%, #27aae1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .vacancies-filters {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+
+      .search-box {
+        position: relative;
+        margin-bottom: 30px;
+
+        .search-icon {
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #999999;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 15px 20px 15px 50px;
+          border: 2px solid #e0e0e0;
+          border-radius: 12px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 16px;
+          transition: all 0.3s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #f7941d;
+            box-shadow: 0 0 0 4px rgba(247, 148, 29, 0.1);
+          }
+        }
+      }
+
+      .categories {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+
+        .category-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          background: #ffffff;
+          border: 2px solid #e0e0e0;
+          border-radius: 10px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          color: #666666;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: #f7941d;
+            color: #f7941d;
+          }
+
+          &.active {
+            background: linear-gradient(135deg, #f7941d 0%, #27aae1 100%);
+            border-color: transparent;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+
+    .vacancies-list {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 25px;
+    }
+
+    .vacancy-card {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .vacancy-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        gap: 20px;
+      }
+
+      .vacancy-main {
+        flex: 1;
+      }
+
+      .vacancy-title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: #000000;
+        margin-bottom: 12px;
+      }
+
+      .vacancy-meta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        .meta-item {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 14px;
+          color: #666666;
+
+          svg {
+            color: #f7941d;
+          }
+        }
+      }
+
+      .vacancy-salary {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        background: linear-gradient(90deg, #f7941d 0%, #27aae1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        white-space: nowrap;
+      }
+
+      .vacancy-description {
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+        line-height: 24px;
+        color: #333333;
+        margin-bottom: 20px;
+      }
+
+      .vacancy-skills {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+
+        .skill-tag {
+          padding: 6px 14px;
+          background: rgba(247, 148, 29, 0.1);
+          border-radius: 6px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          color: #f7941d;
+        }
+      }
+
+      .vacancy-btn {
+        padding: 12px 30px;
+        background: linear-gradient(135deg, #f7941d 0%, #27aae1 100%);
+        border: none;
+        border-radius: 10px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          box-shadow: 0 5px 20px rgba(247, 148, 29, 0.4);
+        }
+      }
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999999;
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+    }
+  }
+
+  // Vacancy Modal
+  .vacancy-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .vacancy-modal {
+    background: #ffffff;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: #f0f0f0;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #f7941d;
+        color: #ffffff;
+        transform: rotate(90deg);
+      }
+    }
+
+    .modal-title {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #000000;
+      margin-bottom: 20px;
+      padding-right: 50px;
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #f0f0f0;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        color: #666666;
+
+        svg {
+          color: #f7941d;
+        }
+      }
+    }
+
+    .modal-section {
+      margin-bottom: 30px;
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: #000000;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          margin-bottom: 12px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          line-height: 24px;
+          color: #333333;
+
+          svg {
+            color: #27aae1;
+            flex-shrink: 0;
+            margin-top: 3px;
+          }
+        }
+      }
+    }
+
+    .modal-skills {
+      margin-bottom: 30px;
+
+      h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: #000000;
+        margin-bottom: 15px;
+      }
+
+      .skills-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .skill-tag {
+          padding: 8px 16px;
+          background: rgba(247, 148, 29, 0.1);
+          border-radius: 8px;
+          font-family: "Montserrat", sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          color: #f7941d;
+        }
+      }
+    }
+
+    .modal-apply-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #f7941d 0%, #27aae1 100%);
+      border: none;
+      border-radius: 12px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 8px 30px rgba(247, 148, 29, 0.4);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 1024px) {
+    .career-hero {
+      padding: 100px 30px 60px;
+
+      .career-hero-title {
+        font-size: 42px;
+      }
+
+      .career-stats {
+        gap: 40px;
+      }
+    }
+
+    .career-benefits .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .career-hero {
+      padding: 80px 20px 50px;
+
+      .career-hero-title {
+        font-size: 32px;
+      }
+
+      .career-hero-subtitle {
+        font-size: 16px;
+      }
+
+      .career-stats {
+        flex-direction: column;
+        gap: 20px;
+
+        .stat-item .stat-number {
+          font-size: 36px;
+        }
+      }
+    }
+
+    .career-benefits {
+      padding: 60px 20px;
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    .career-vacancies {
+      padding: 60px 20px;
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .vacancies-filters .categories {
+        .category-btn {
+          font-size: 12px;
+          padding: 10px 18px;
+        }
+      }
+
+      .vacancy-card {
+        padding: 20px;
+
+        .vacancy-header {
+          flex-direction: column;
+        }
+
+        .vacancy-title {
+          font-size: 20px;
+        }
+
+        .vacancy-meta {
+          gap: 15px;
+        }
+      }
+    }
+
+    .vacancy-modal {
+      padding: 30px 20px;
+
+      .modal-title {
+        font-size: 24px;
+      }
+
+      .modal-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}
