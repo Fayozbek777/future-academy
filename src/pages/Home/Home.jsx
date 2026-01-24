@@ -409,7 +409,7 @@ const Home = () => {
                 data-aos="fade-down"
                 data-aos-delay="200"
               >
-                <a href="#" className="item">
+                <a href={`/${import.meta.env.VITE_BASE_PATH}`} className="item">
                   Базы знаний
                 </a>
               </motion.li>
@@ -419,7 +419,10 @@ const Home = () => {
                 data-aos="fade-down"
                 data-aos-delay="250"
               >
-                <a href="#" className="item">
+                <a
+                  href={`/${import.meta.env.VITE_CAREER_PATH}`}
+                  className="item"
+                >
                   Карьера
                 </a>
               </motion.li>

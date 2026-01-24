@@ -52,6 +52,7 @@ import "../Home/UI/Home.scss";
 import "./UI/Contact.scss";
 import socials from "../../images/socials.png";
 import yandexDzen from "../../images/yandex.png";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -200,15 +201,17 @@ const Contact = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <motion.img
-              src={scrolled ? fixedLogo : logo}
-              alt="Logo"
-              className="nav-logo"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              key={scrolled ? "fixed" : "normal"}
-            />
+            <Link to="/">
+              <motion.img
+                src={scrolled ? fixedLogo : logo}
+                alt="Logo"
+                className="nav-logo"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                key={scrolled ? "fixed" : "normal"}
+              />
+            </Link>
           </motion.div>
 
           <div
@@ -267,7 +270,10 @@ const Contact = () => {
                 data-aos="fade-down"
                 data-aos-delay="250"
               >
-                <a href="#" className="item">
+                <a
+                  href={`/${import.meta.env.VITE_CAREER_PATH}`}
+                  className="item"
+                >
                   Карьера
                 </a>
               </motion.li>
