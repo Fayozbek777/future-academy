@@ -359,7 +359,10 @@ const Education = () => {
                 data-aos="fade-down"
                 data-aos-delay="150"
               >
-                <a href="#" className="item">
+                <a
+                  href={`/${import.meta.env.VITE_EVENT_PATH}`}
+                  className="item"
+                >
                   Мероприятия
                 </a>
               </motion.li>
