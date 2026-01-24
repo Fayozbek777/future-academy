@@ -1,41 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import logo from "../../images/logo.png";
-import titleSubImage from "../../images/title-sub-image.png";
-import { Send } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
-import { Locate, Mail } from "lucide-react";
-import fixedLogo from "../../images/fixed-logo.png";
-
-import wk from "../../images/wk.png";
-import face from "../../images/facebook.png";
-import insta from "../../images/instagram.png";
-import yt from "../../images/youtube.png";
-import tg from "../../images/telegram.png";
-import settings from "../../images/settings-image.png";
-import smartGuy from "../../images/smart-guy.png";
-import book from "../../images/book-image.png";
-import teacher from "../../images/teacher-image.png";
-import owl from "../../images/owl-image.png";
-
-const features = [
-  {
-    icon: settings,
-    text: "Передовой подход к образовательному процессу",
-  },
-  {
-    icon: book,
-    text: "Непрерывное усовершенствование и пополнение базы курсов",
-  },
-  {
-    icon: teacher,
-    text: "Только практикующие преподаватели",
-  },
-  {
-    icon: smartGuy,
-    text: "Сопровождение на всех этапах. От начала обучения до трудоустройства",
-  },
-];
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   ChevronDown,
@@ -45,20 +9,28 @@ import {
   User,
   Phone,
   ChevronRight,
+  Plus,
+  Send,
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import fixedLogo from "../../images/fixed-logo.png";
 import "../Home/UI/Home.scss";
-import "./UI/Contact.scss";
-import socials from "../../images/socials.png";
-import yandexDzen from "../../images/yandex.png";
+import "./UI/Event.scss";
+import logo from "../../images/logo.png";
+import titleSubImage from "../../images/title-sub-image.png";
+import settings from "../../images/settings-image.png";
+import smartGuy from "../../images/smart-guy.png";
+import book from "../../images/book-image.png";
+import teacher from "../../images/teacher-image.png";
+import owl from "../../images/owl-image.png";
+import wk from "../../images/wk.png";
+import face from "../../images/facebook.png";
+import insta from "../../images/instagram.png";
+import yt from "../../images/youtube.png";
+import tg from "../../images/telegram.png";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-  });
+const Event = () => {
   const footerLinks = [
     {
       title: "Подросткам",
@@ -120,9 +92,36 @@ const Contact = () => {
     { icon: yt, name: "YouTube", url: "#" },
     { icon: tg, name: "Telegram", url: "#" },
   ];
+
   const [cityOpen, setCityOpen] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const [openIndex, setOpenIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  const features = [
+    {
+      icon: settings,
+      text: "Передовой подход к образовательному процессу",
+    },
+    {
+      icon: book,
+      text: "Непрерывное усовершенствование и пополнение базы курсов",
+    },
+    {
+      icon: teacher,
+      text: "Только практикующие преподаватели",
+    },
+    {
+      icon: smartGuy,
+      text: "Сопровождение на всех этапах. От начала обучения до трудоустройства",
+    },
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -134,6 +133,215 @@ const Contact = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
+
+  const courses = [
+    "Робототехника",
+    "Создание игр",
+    "Web-разработка",
+    "Мультимедиа",
+    "Шахматы",
+    "3D-моделирование и дизайн",
+    "Английский язык",
+    "Блогинг",
+    "Soft skills",
+  ];
+
+  const vacancies = [
+    {
+      title: "Дизайнер",
+      location: "г. Москва",
+      description: `Мы ищем креативного дизайнера для создания визуального контента образовательных курсов!
+
+Обязанности:
+• Разработка дизайна для онлайн-курсов и образовательных материалов
+• Создание презентаций, инфографики и иллюстраций
+• Работа с фирменным стилем академии
+• Создание рекламных материалов для социальных сетей
+
+Требования:
+• Опыт работы дизайнером от 2-х лет
+• Уверенное владение Figma, Adobe Photoshop, Illustrator
+• Портфолио с примерами работ
+• Чувство стиля и понимание современных трендов
+
+Мы предлагаем:
+• Работу в дружной команде профессионалов
+• Бесплатный доступ ко всем курсам академии
+• Гибкий график и возможность удаленной работы
+• Конкурентную заработную плату`,
+    },
+    {
+      title: "Разработчик игр",
+      location: "г. Москва",
+      description: `Присоединяйтесь к команде разработки игровых проектов для обучения программированию!
+
+Обязанности:
+• Разработка обучающих игр на Unity/Unreal Engine
+• Создание игровых механик для образовательных целей
+• Оптимизация производительности игр
+• Работа в команде с дизайнерами и методистами
+
+Требования:
+• Опыт разработки игр от 3-х лет
+• Знание Unity 3D или Unreal Engine
+• Владение C# или C++
+• Опыт работы с Git
+
+Мы предлагаем:
+• Интересные проекты в сфере EdTech
+• Профессиональное развитие и обучение
+• Современный офис в центре Москвы
+• ДМС после испытательного срока`,
+    },
+    {
+      title: "Веб-разработчик",
+      location: "г. Москва",
+      description: `Ищем Frontend-разработчика для развития образовательной платформы!
+
+Обязанности:
+• Разработка и поддержка веб-приложений
+• Создание интерактивных элементов для курсов
+• Оптимизация производительности сайта
+• Внедрение новых функций платформы
+
+Требования:
+• Опыт коммерческой разработки от 2-х лет
+• Отличное знание React, JavaScript, TypeScript
+• Понимание принципов адаптивной верстки
+• Опыт работы с API и REST
+
+Мы предлагаем:
+• Работу над современным стеком технологий
+• Гибкий график работы
+• Возможность профессионального роста
+• Дружный коллектив и комфортный офис`,
+    },
+    {
+      title: "Методист курсов",
+      location: "г. Москва",
+      description: `Требуется методист для разработки образовательных программ!
+
+Обязанности:
+• Разработка учебных планов и программ курсов
+• Создание методических материалов
+• Контроль качества образовательного контента
+• Работа с преподавателями и экспертами
+
+Требования:
+• Педагогическое или профильное образование
+• Опыт работы методистом от 2-х лет
+• Знание современных образовательных технологий
+• Отличные коммуникативные навыки
+
+Мы предлагаем:
+• Творческую работу в сфере образования
+• Возможность реализации своих идей
+• Обучение и развитие
+• Стабильную заработную плату`,
+    },
+    {
+      title: "3D-моделирование и дизайн",
+      location: "г. Москва",
+      description: `Ищем 3D-художника для создания образовательного контента!
+
+Обязанности:
+• Создание 3D-моделей для обучающих материалов
+• Разработка визуализаций и анимаций
+• Текстурирование и освещение сцен
+• Работа с техническими заданиями
+
+Требования:
+• Опыт работы 3D-художником от 2-х лет
+• Владение Blender, Maya или 3ds Max
+• Знание Substance Painter/Designer
+• Портфолио с примерами работ
+
+Мы предлагаем:
+• Интересные проекты
+• Современное оборудование
+• Бесплатное обучение
+• Возможность удаленной работы`,
+    },
+    {
+      title: "Преподаватель робототехники",
+      location: "г. Москва",
+      description: `Приглашаем преподавателя робототехники для работы с детьми!
+
+Обязанности:
+• Проведение занятий по робототехнике для детей 8-14 лет
+• Разработка практических заданий и проектов
+• Подготовка учеников к соревнованиям
+• Работа с образовательными конструкторами
+
+Требования:
+• Техническое образование
+• Опыт работы с детьми
+• Знание Arduino, Raspberry Pi, LEGO Mindstorms
+• Умение доступно объяснять сложные вещи
+
+Мы предлагаем:
+• Работу с мотивированными учениками
+• Все необходимое оборудование
+• Методическую поддержку
+• Гибкий график`,
+    },
+    {
+      title: "Преподаватель Web-разработки",
+      location: "г. Москва",
+      description: `Требуется преподаватель для обучения веб-разработке!
+
+Обязанности:
+• Проведение онлайн и офлайн занятий
+• Разработка учебных материалов
+• Проверка домашних заданий и проектов
+• Менторская поддержка студентов
+
+Требования:
+• Опыт коммерческой разработки от 3-х лет
+• Знание HTML, CSS, JavaScript, React
+• Опыт преподавания будет плюсом
+• Желание делиться знаниями
+
+Мы предлагаем:
+• Возможность совмещения с основной работой
+• Достойное вознаграждение
+• Профессиональное развитие
+• Творческую свободу`,
+    },
+    {
+      title: "Тренер Soft skills",
+      location: "г. Москва",
+      description: `Ищем тренера для развития гибких навыков у студентов!
+
+Обязанности:
+• Проведение тренингов по развитию soft skills
+• Работа с подростками и взрослыми
+• Разработка программ личностного развития
+• Индивидуальные консультации
+
+Требования:
+• Опыт работы тренером от 2-х лет
+• Психологическое или педагогическое образование
+• Знание современных методик обучения
+• Харизматичность и коммуникабельность
+
+Мы предлагаем:
+• Работу с заинтересованной аудиторией
+• Возможность проводить авторские программы
+• Профессиональное сообщество
+• Конкурентную оплату труда`,
+    },
+  ];
+
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   const cities = [
@@ -167,24 +375,6 @@ const Contact = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const contactInfo = [
-    {
-      icon: <Phone size={24} />,
-      text: "8 800 950-33-98",
-      link: "tel:88009503398",
-    },
-    {
-      icon: <Mail size={24} />,
-      text: "info@hodfutureacademy.ru",
-      link: "mailto:info@hodfutureacademy.ru",
-    },
-    {
-      icon: <MapPin size={24} />,
-      text: "г. Москва, ул. Ленина, д. 50",
-      link: "#",
-    },
-  ];
 
   return (
     <div>
@@ -363,94 +553,103 @@ const Contact = () => {
           </div>
         </div>
       </motion.nav>
-      <div className="contact">
-        <div className="contact-glav-box">
-          <motion.div className="contact-left" data-aos="fade-right">
-            <div className="breadcrumb">
-              <span className="breadcrumb-item">
-                <a href="/">Главная</a>
-              </span>
-              <ChevronRight size={16} className="breadcrumb-arrow" />
-              <span className="breadcrumb-item active">Контакты</span>
-            </div>
 
-            <motion.h1
-              className="title"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-            >
-              Контакты
-            </motion.h1>
+      <div className="event">
+        <div className="event-glav-box">
+          <div className="event-sub-text">
+            <span className="breadcrumb-item">
+              <a href="/">Главная</a>
+            </span>
+            <ChevronRight size={16} className="breadcrumb-arrow" />
+            <span className="breadcrumb-item active">Мероприятия</span>
+          </div>
 
-            <div className="contact-info-list">
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.link}
-                  className="contact-info-item"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5, scale: 1.02 }}
-                >
-                  <div className="contact-icon">{item.icon}</div>
-                  <div className="contact-text">{item.text}</div>
-                </motion.a>
-              ))}
-            </div>
+          <motion.h1
+            className="event-title"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6 }}
+          >
+            Вакансии
+          </motion.h1>
 
-            <motion.div
-              className="social-section"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.img
-                src={socials}
-                alt="Social networks"
-                className="contact-image"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.img
-                src={yandexDzen}
-                alt="Yandex Dzen"
-                className="contact-image1"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.div>
-          </motion.div>
+          <motion.p
+            className="event-text"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Станьте частью команды ХОД Future Academy
+          </motion.p>
 
-          <motion.div className="contact-right" data-aos="fade-left">
-            <div className="map-container">
+          <div className="event-courses">
+            {courses.map((course, index) => (
               <motion.div
-                className="map-glow"
-                animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-              <iframe
-                src="https://www.google.com/maps/d/embed?mid=1WawOkbEXKmzdkQvMYwzFaG54Wbk&hl=en&ehbc=2E312F"
-                className="map-iframe"
-                title="ХОД Future Academy Location"
-                loading="lazy"
-              />
-            </div>
-          </motion.div>
+                key={index}
+                className="event-course-box"
+                data-aos="zoom-in"
+                data-aos-delay={index * 50}
+                whileHover={{ scale: 1.05, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {course}
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="faq-menu">
+            {vacancies.map((vacancy, index) => (
+              <motion.div
+                key={index}
+                className="faq-box"
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+              >
+                <motion.div
+                  className="faq-header"
+                  onClick={() => toggleAccordion(index)}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="faq-left">{vacancy.title}</div>
+                  <div className="faq-right">
+                    <span className="location">{vacancy.location}</span>
+                    <motion.div
+                      className="toggle-icon"
+                      animate={{ rotate: openIndex === index ? 45 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Plus size={24} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      className="faq-content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="faq-description">
+                        {vacancy.description.split("\n").map((line, i) => (
+                          <p key={i}>{line}</p>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="welcome">
+      <div className="welcome" id="enevt-welcome">
         <motion.h1
           className="welc-glav-title"
           initial={{ opacity: 0, y: -30 }}
@@ -593,7 +792,7 @@ const Contact = () => {
           </div>
         </motion.div>
       </div>
-      <footer className="footer">
+      <footer className="footer" id="event-footer">
         <div className="footer-glav-box">
           <motion.div className="footer-left" data-aos="fade-right">
             <motion.img
@@ -674,4 +873,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Event;
